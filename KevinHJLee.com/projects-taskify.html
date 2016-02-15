@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Concentric by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Taskify</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+					<div>
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="index.html">Kevin Lee</a></h1>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="current_page_item"><a href="index.html">Home</a></li>
+									<li><a href="https://kevinhjlee.wordpress.com/">Blog</a></li>
+									<li><a href="index.html#main">Projects</a></li>
+									<li><a href="index.html#footer">Contact Me</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="container">
+
+						<!-- Content -->
+							<div class="row">
+								<div id="content" class="12u">
+									<article>
+										<header>
+											<h2>Taskify</h2>
+											<span class="byline">Your personal scheduling application</span>
+										</header>
+										<img src="images/Taskify/taskifysplash.jpg" style="width: 300px;">
+										<span class="caption">Taskify splash screen</span>
+										<h3>Motivation</h3>
+										<p>Life is busy and it's difficult to manage it all. Sometimes there's so much work to do that you have no idea where to start. Calendar and To-Do list apps are okay but they only work if you're constantly checking and updating them. Users need something more: a scheduling app.</p>
+										<h3>Summary</h3>
+										Taskify is a personal scheduling Android app that not only keeps track of your calendar and to-do list but also tells you the best time to work on what. It acts kind of like your mom by scheduling all your tasks for you and occasionally checking in on your progress. Rather than having to update your phone everytime you start and end a different task, Taskify will intelligently prompt the user with a notification asking whether they're actually working on what they're suppose to or if they've finished early. If you're ahead of schedule or behind it's okay because taskify will reschedule everything for your to make sure you still meet your deadlines. If Taskify sees that you're trying to schedule too many events, it'll begin prompting you to drop some lower priority tasks.
+
+										Taskify was a project built for PennApps Spring 2016.
+										<br><br>
+										<img src="images/Taskify/taskifymonth.jpg" style="width: 300px;">
+										<span class="caption">The month view for Taskify events. Black - Past Events. Gray - Tasks. Green - Time Commitments.</span>
+
+										<h3>Technical Description</h3>
+										The scheduling algorithm used for Taskify was inspired by Rate-Monotonic scheduling used by Real-Time Operating Systems to schedule tasks. I took a real time embedded course last semester and thought it be interesting to see if the idea could be applied to people.
+
+										<br><br>
+
+										For Taskify, calendar events were divided into two classes: TimeCommitments and Tasks. Time commitments include events such as meetings and lectures, which must be scheduled for their designated times and are assigned the highest priority of 0. Tasks must be completed by a certain deadline and homework assignments, workout goals, etc. Since TimeCommitments all have priorities of 0, they are scheduled first and then Tasks get scheduled on top of them. Since not all tasks are periodic, a new definition for priority was needed. I found many different scheduling heuristics online and ended up settling for the <a href="https://en.wikipedia.org/wiki/Modified_due-date_scheduling_heuristic">Weighted Modified Due Date</a> heuristic where a task's priority is a function of how much of it has been processed, its deadline, and its difficulty, which was hardcoded for the purpose of this demo, but in the future should be based off user prompting or assumptions made based on the nature of the task.
+
+										<br><br>
+										
+										Voice interaction was built into Taskify using Soundhound's recently released Houndify API, specifically the Calendar domain. Houndify takes user voice commands and returns a JSON of relevant information. For example, if a user mentions that they an exam at a certain time, Houndify will return a JSON containing information such as the events name, time, and location, which would then be interpreted to create Taskify calendar events.
+
+										<br><br>
+										<img src="images/Taskify/taskifyhoundify.jpg" style="width: 300px;">
+										<span class="caption">An example of users interacting with Taksify through voice commands.</span>
+
+										<h3>What's Next?</h3>
+										Coming soon!
+
+										<h3>Technology Used</h3>
+											<ul>
+												<li>Android Studio (Java)</li>
+												<li>Soundhound's Houndify API - Calendar Domain</li>
+											</ul>
+										<h3>Github:</h3>
+										<a href="https://github.com/johnnyforde/Taskify">https://github.com/johnnyforde/Taskify</a>
+										<h3>Devpost:</h3>
+										<a href="http://devpost.com/software/taskify2">http://devpost.com/software/taskify2</a>
+									</article>
+								</div>
+							</div>
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<section id="footer">
+					<div class="container">
+
+						<!-- Social -->
+							<section>
+								<ul class="social">
+									<li><a href="https://www.linkedin.com/in/kevinhjlee" class="icon fa-linkedin"><span>Linkedin</span></a></li>
+									<li><a href="https://github.com/kevkloud" class="icon fa-github"><span>GitHub</span></a></li>
+									<li><a href="mailto:khlee1@andrew.cmu.edu" class="icon fa-envelope"><span>Email</span></a></li>
+								</ul>
+							</section>
+
+						<!-- Copyright -->
+							<div class="copyright">
+								&copy; Copyright Kevin Lee 2016. Updated February 11, 2016.
+							</div>
+
+					</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
